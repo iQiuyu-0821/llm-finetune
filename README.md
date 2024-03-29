@@ -3,6 +3,8 @@
 
 The guide below walks you through installation and how to run LLM finetune.
 
+<img src="./docs/llm-finetune.png" alt="image" width=600 height="auto">
+
 ## Deploy Finetune Runtime
 
 ### Installation
