@@ -1,5 +1,5 @@
 
-# LLM - Finetune：
+# LLM - Finetune
 
 The guide below walks you through installation and how to run LLM finetune.
 
