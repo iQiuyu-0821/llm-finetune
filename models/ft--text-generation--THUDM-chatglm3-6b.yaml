@@ -3,6 +3,7 @@ model_config:
   model_task: text-generation
   model_id: THUDM/chatglm3-6b
   max_input_words: 800
+  quantization_bit: 4
   initialization:
     initializer:
       type: Finetune
@@ -22,7 +23,7 @@ ft_config:
   train_config:
     lora_config: 
       r: 1  # Lora attention dimension
-      task_type: SEQ_CLS   #SEQ_CLS, SEQ_2_SEQ_LM, CAUSAL_LM, TOKEN_CLS, QUESTION_ANS, FEATURE_EXTRACTION
+      task_type: CAUSAL_LM   #SEQ_CLS, SEQ_2_SEQ_LM, CAUSAL_LM, TOKEN_CLS, QUESTION_ANS, FEATURE_EXTRACTION
       lora_alpha: 1  # The alpha parameter for Lora scaling
       lora_dropout: 0.1   # The dropout probability for Lora layers
     base_config:
@@ -39,4 +40,3 @@ ft_config:
       save_strategy: steps
       save_steps: 25
       max_steps: 50
-      fp16: 
