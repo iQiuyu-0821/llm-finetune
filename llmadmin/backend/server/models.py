@@ -375,6 +375,7 @@ class LLMConfig(BaseModelExtended):
     warmup: bool    # need warmup?
     model_task: str    # need verification, TODO
     model_id: str
+    quantization_bit: Optional[int] = None
     initialization: InitializationConfig
     generation: GenerationConfig = None
     model_url: Optional[str] = None

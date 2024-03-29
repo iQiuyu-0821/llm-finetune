@@ -48,6 +48,7 @@ class TransformersFT(BaseFT):
         initialize_node(self.model_config.model_id, self.model_config.initialization.s3_mirror_config)
         logger.info(f"Start loading tokenizer for finetune {self.model_config.model_id}")
         # self.model_config.model_id = '/root/.cache/huggingface/hub/ZhipuAI/chatglm3-6b/'
+        # self.model_config.model_id = '/data/hhwang/models/chatglm2-6b/'
         tokenizer = self.initializer.load_tokenizer(self.model_config.model_id)
         if self.model_config.add_special_tokens:
             add_special_tokens = self.model_config.add_special_tokens
@@ -61,6 +62,9 @@ class TransformersFT(BaseFT):
         logger.info(f"Load model {self.model_config.model_id} by {taskobj.AUTO_MODEL_CLASS}")
         from_pretrained_kwargs = taskobj.FROM_PRETRAINED_KWARGS if taskobj.FROM_PRETRAINED_KWARGS else {}
         model = self.initializer.load_model(self.model_config.model_id, taskobj.AUTO_MODEL_CLASS, **from_pretrained_kwargs)
+        if self.model_config.quantization_bit is not None:
+            print(f"Quantized to {self.model_config.quantization_bit} bit")
+            model = model.quantize(self.model_config.quantization_bit)
         
         taskobj.set_model(model)
         

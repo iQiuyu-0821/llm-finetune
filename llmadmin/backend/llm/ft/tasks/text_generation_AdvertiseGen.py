@@ -174,4 +174,5 @@ class NoheaderAdvertiseGen(Task):
         return self.dataset[self.training_key()].select(range(len)).map(self.get_data_proprocess(), batched=True, remove_columns=[self.prompt_column, self.response_column])
 
     def getSmallEvalDataSet(self, len: int):
-        return self.dataset[self.validation_key()].select(range(len)).map(self.get_eval_preprocess(), batched=True, remove_columns=[self.prompt_column, self.response_column])
+        return self.dataset[self.validation_key()].select(range(len)).map(self.get_data_proprocess(), batched=True, remove_columns=[self.prompt_column, self.response_column])
+        # return self.dataset[self.validation_key()].select(range(len)).map(self.get_eval_preprocess(), batched=True, remove_columns=[self.prompt_column, self.response_column])

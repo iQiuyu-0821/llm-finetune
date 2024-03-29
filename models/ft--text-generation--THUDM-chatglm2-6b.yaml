@@ -3,12 +3,14 @@ model_config:
   model_task: text-generation
   model_id: THUDM/chatglm2-6b
   max_input_words: 800
+  quantization_bit: 4
   initialization:
     initializer:
       type: Finetune
       dtype: float32
       from_pretrained_kwargs:
         trust_remote_code: true
+        # load_in_8bit: True
 ft_config:
   ft_task: "text-generation"
   data_config:

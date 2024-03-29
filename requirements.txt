@@ -29,3 +29,4 @@ scipy==1.11.1
 einops
 transformers_stream_generator
 tiktoken
+cpm_kernels
