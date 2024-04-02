@@ -5,6 +5,11 @@ model_config:
   max_input_words: 800
   quantization_bit: 4
   initialization:
+    # s3_mirror_config:
+      # endpoint_url: http://39.107.108.170:9000 # Optinal for custom S3 storage endpoint url 
+      # bucket_uri: s3://opt-125m/facemodel/  # Must include hash file with commit id in repo
+      # bucket_uri: /root/.cache/huggingface/hub/ZhipuAI/chatglm3-6b/ # Local path of model with hash file
+      # git_uri: https://portal.opencsg.com/models/opt-125m.git # git address for git clone
     initializer:
       type: Finetune
       dtype: float32
