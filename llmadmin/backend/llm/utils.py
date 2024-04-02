@@ -42,7 +42,8 @@ def download_model(
     isAutoLoadConfigSuccess = False
     modelConfig = None
     try:
-        modelConfig = AutoConfig.from_pretrained(model_id)
+        modelConfig = AutoConfig.from_pretrained(
+            model_id, trust_remote_code=True)
         isAutoLoadConfigSuccess = True
     except Exception:
         isAutoLoadConfigSuccess = False
