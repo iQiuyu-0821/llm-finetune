@@ -42,7 +42,10 @@ class BaseModelExtended(BaseModel):
     def parse_yaml(cls, file, **kwargs) -> "BaseModelExtended":
         kwargs.setdefault("Loader", yaml.SafeLoader)
         dict_args = yaml.load(file, **kwargs)
-        return cls.parse_obj(dict_args)
+        try:
+            return cls.parse_obj(dict_args)
+        except:
+            raise ValueError(f"Invalid values or format in {file.name}")
 
     def yaml(
         self,
